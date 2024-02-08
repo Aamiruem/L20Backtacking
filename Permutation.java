@@ -8,7 +8,7 @@ public class Permutation {
     // recursion
     for (int i = 0; i < str.length(); i++) {
       char curr = str.charAt(i);
-
+      //"abcde" => "ab" + "de" => "abde"
       String newStr = str.substring(0, i) + str.substring(i + 1);
       findPermutation(newStr, ans + curr);
     }

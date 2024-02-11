@@ -25,3 +25,6 @@ public class ArrayBacktracking {
     printArr(arr);
   }
 }
+
+
+// my name is Aamir hussain azad

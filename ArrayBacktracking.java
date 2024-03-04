@@ -9,7 +9,7 @@ public class ArrayBacktracking {
     // recursion
     arr[i] = val;
     changeArr(arr, i + 1, val + 1); // function call step
-    arr[i] = arr[i] - 2; //backtracking step
+    arr[i] = arr[i] - 2; // backtracking step
   }
 
   public static void printArr(int arr[]) {
@@ -25,6 +25,5 @@ public class ArrayBacktracking {
     printArr(arr);
   }
 }
-
 
 // my name is Aamir hussain azad

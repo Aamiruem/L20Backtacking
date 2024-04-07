@@ -55,45 +55,46 @@
 //   }
 // }
 
-public class MobileKeypadInput {
 
-  static final char[][] L = {
-    {},
-    {},
-    { 'a', 'b', 'c' },
-    { 'd', 'e', 'f' },
-    { 'g', 'h', 'i' },
-    { 'j', 'k', 'l' },
-    { 'm', 'n', 'o' },
-    { 'p', 'q', 'r', 's' },
-    { 't', 'u', 'v' },
-    { 'w', 'x', 'y', 'z' },
+
+
+
+
+
+public class MobilesKeypadInput {
+
+  static final char[][] keypadLetters = {
+      {}, {}, {'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'},
+      {'j', 'k', 'l'}, {'m', 'n', 'o'}, {'p', 'q', 'r', 's'},
+      {'t', 'u', 'v'}, {'w', 'x', 'y', 'z'}
   };
 
-  public static void letterCombinations(String D) {
-    int len = D.length();
-    if (len == 0) {
-      System.out.print("");
-      return;
-    }
-    bsf(0, len, new StringBuilder(), D);
+  public static void letterCombinations(String digits) {
+      int length = digits.length();
+      if (length == 0) {
+          System.out.println("");
+          return;
+      }
+      backtrack(0, length, new StringBuilder(), digits);
   }
 
-  public static void bsf(int pos, int len, StringBuilder sb, String D) {
-    if (pos == len) {
-      System.out.println(sb.toString());
-    } else {
-      char[] letters = L[Character.getNumericValue(D.charAt(pos))];
-      for (int i = 0; i < letters.length; i++) {
-        bsf(pos + 1, len, new StringBuilder(sb).append(letters[i]), D);
+  public static void backtrack(int position, int length, StringBuilder sb, String digits) {
+      if (position == length) {
+          System.out.println(sb.toString());
+      } else {
+          char[] letters = keypadLetters[Character.getNumericValue(digits.charAt(position))];
+          for (char letter : letters) {
+              sb.append(letter);
+              backtrack(position + 1, length, sb, digits);
+              sb.deleteCharAt(sb.length() - 1); // Backtrack
+          }
       }
-    }
   }
 
   public static void main(String[] args) {
-    System.out.println("letterCombinations 23 =  ");
-    letterCombinations("23");
-    System.out.println("letterCombinations 2 =  ");
-    letterCombinations("2");
+      System.out.println("Letter Combinations for 23:");
+      letterCombinations("23");
+      System.out.println("Letter Combinations for 2:");
+      letterCombinations("2");
   }
 }

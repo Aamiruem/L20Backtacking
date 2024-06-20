@@ -1,3 +1,4 @@
+package L20BackTarcking;
 public class CountWaysNQueen {
 
   public static boolean isSafe(char board[][], int row, int col) {

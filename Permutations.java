@@ -1,5 +1,5 @@
-package L20BackTarcking;
-public class Permutation {
+// package L20BackTarcking;
+public class Permutations {
 
   public static void findPermutation(String str, String ans) {
     if (str.length() == 0) {

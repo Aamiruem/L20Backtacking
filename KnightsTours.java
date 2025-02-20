@@ -1,5 +1,5 @@
-package L20BackTarcking;
-public class KnightsTour {
+// package L20BackTarcking;
+public class KnightsTours {
 
   // Board size
   static int N = 8;

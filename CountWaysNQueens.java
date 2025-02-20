@@ -1,5 +1,5 @@
-package L20BackTarcking;
-public class CountWaysNQueen {
+// package L20BackTarcking;
+public class CountWaysNQueens {
 
   public static boolean isSafe(char board[][], int row, int col) {
     //vertical up

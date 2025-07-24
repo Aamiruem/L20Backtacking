@@ -1,4 +1,5 @@
 # Types of Backtracking
+
 Decision=> means finding a single solution to the problem
 Optimization=> means better performance and reduce memory usage when dealing with large datasets with large memory
 Enumeration=> means list karna

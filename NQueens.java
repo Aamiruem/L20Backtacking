@@ -1,3 +1,8 @@
+// Time complexity: O(n!) where n is the length of the string. The time complexity is exponential in the length of the string due to the recursive nature of the function.
+
+// Space complexity: O(n) where n is the length of the string. The space complexity is linear in the length of the string.
+
+
 public class NQueens {
 
     public static boolean isSafe(char board[][], int row, int col) {

@@ -1,4 +1,4 @@
-package L20BackTarcking;
+// package L20BackTarcking;
 // public class SolutionPossible {
 
 //   public static boolean isSafe(char board[][], int row, int col) {
@@ -150,7 +150,7 @@ package L20BackTarcking;
 //   }
 // }
 
-public class SolutionPossible {
+public class NqueenSolutionPossible {
 
   public static int count = 0;
 

@@ -1,8 +1,8 @@
-package L20BackTarcking;
+// package L20BackTarcking;
 // public class RatMazeProblem {
 
 //   // Method to print the solution matrix
-//   public static void printSolution(int sol[][]) {
+//   public static void printMaze(int sol[][]) {
 //     for (int i = 0; i < sol.length; i++) {
 //       for (int j = 0; j < sol.length; j++) {
 //         System.out.print(" " + sol[i][j] + " ");
@@ -31,7 +31,7 @@ package L20BackTarcking;
 //     }
 
 //     // Print the solution matrix
-//     printSolution(sol);
+//     printMaze(sol);
 //     return true;
 //   }
 
@@ -77,7 +77,7 @@ package L20BackTarcking;
 
 // public class RatMazeProblem {
 
-//   public static void printSolution(int sol[][]) {
+//   public static void printMaze(int sol[][]) {
 //     for (int i = 0; i < sol.length; i++) {
 //       for (int j = 0; j < sol[i].length; j++) {
 //         System.out.print(" " + sol[i][j] + " ");
@@ -103,7 +103,7 @@ package L20BackTarcking;
 //       System.out.println("Solution does not exist");
 //       return false;
 //     }
-//     printSolution(sol);
+//     printMaze(sol);
 //     return true;
 //   }
 
@@ -145,7 +145,7 @@ package L20BackTarcking;
 
 // public class RatMazeProblem {
 
-//   public static void printSolution(int sol[][]) {
+//   public static void printMaze(int sol[][]) {
 //     for (int i = 0; i < sol.length; i++) {
 //       for (int j = 0; j < sol.length; j++) {
 //         System.out.print(" " + sol[i][j] + " ");
@@ -167,7 +167,7 @@ package L20BackTarcking;
 //       System.out.println("solution does not exist");
 //       return false;
 //     }
-//     printSolution(sol);
+//     printMaze(sol);
 //     return true;
 //   }
 
@@ -208,70 +208,93 @@ package L20BackTarcking;
 //   }
 // }
 
-public class RatMazeProblem {
 
-  public static void printSolution(int sol[][]) {
+
+
+
+
+
+
+// Define a public class named RatMazeProblems
+public class RatMazeProblems {
+
+  // A static method to print the solution matrix
+  public static void printMaze(int sol[][]) {
+    // Loop through each row
     for (int i = 0; i < sol.length; i++) {
+      // Loop through each column
       for (int j = 0; j < sol.length; j++) {
+        // Print the element at position [i][j] with space
         System.out.print(" " + sol[i][j] + " ");
       }
+      // Move to next line after printing each row
       System.out.println();
     }
   }
 
+  // Method to check if current x, y position is safe to move to
   public static boolean isSafe(int maze[][], int x, int y) {
-    return (
-      x >= 0 && x < maze.length && y >= 0 && y < maze.length && maze[x][y] == 1
-    );
+    // Returns true only if x and y are within bounds of the maze and cell is 1
+    // (open)
+    return (x >= 0 && x < maze.length && y >= 0 && y < maze.length && maze[x][y] == 1);
   }
 
+  // Main function to solve the maze
   public static boolean solveMaze(int maze[][]) {
-    int N = maze.length;
-    int sol[][] = new int[N][N];
+    int N = maze.length; // Size of maze (N x N)
+    int sol[][] = new int[N][N]; // Initialize a solution matrix with 0s
+
+    // Call utility to solve maze starting from (0, 0)
     if (solveMazeUtil(maze, 0, 0, sol) == false) {
-      System.out.println("Solution does not exist");
-      return false;
+      System.out.println("Solution does not exist"); // If no path found
+      return false; // Return false
     }
-    printSolution(sol);
-    return true;
+
+    printMaze(sol); // If path found, print the solution matrix
+    return true; // Return true
   }
 
+  // Recursive utility to solve the maze
   public static boolean solveMazeUtil(int maze[][], int x, int y, int sol[][]) {
+    // If destination (bottom-right) is reached and it's not blocked
     if (x == maze.length - 1 && y == maze.length - 1 && maze[x][y] == 1) {
-      sol[x][y] = 1;
-      return true;
+      sol[x][y] = 1; // Mark destination in solution matrix
+      return true; // Return true since destination reached
     }
 
-    // Check if maze[x][y] is valid
+    // Check if current cell is valid to move
     if (isSafe(maze, x, y) == true) {
+      // If already part of solution path, return false to avoid loops
       if (sol[x][y] == 1) {
         return false;
       }
-      sol[x][y] = 1;
 
+      sol[x][y] = 1; // Mark current cell as part of solution path
+
+      // Move down in the maze (x+1)
       if (solveMazeUtil(maze, x + 1, y, sol)) {
-        return true;
+        return true; // Return true if path is found going down
       }
 
+      // Move right in the maze (y+1)
       if (solveMazeUtil(maze, x, y + 1, sol)) {
-        return true;
+        return true; // Return true if path is found going right
       }
 
+      // If both directions fail, backtrack: unmark current cell
       sol[x][y] = 0;
-      return false;
+      return false; // Return false, no path from current cell
     }
 
-    return false;
+    return false; // If cell is not safe
   }
 
+  // Main method to run the program
   public static void main(String[] args) {
-    int maze[][] = {
-      { 1, 0, 0, 0 },
-      { 1, 1, 0, 1 },
-      { 0, 1, 0, 0 },
-      { 1, 1, 1, 1 },
-    };
+    // Define a 4x4 maze (1 = open path, 0 = blocked)
+    int maze[][] = { { 1, 0, 0, 0 }, { 1, 1, 0, 1 }, { 0, 1, 0, 0 }, { 1, 1, 1, 1 }, };
 
+    // Call the method to solve the maze
     solveMaze(maze);
   }
 }

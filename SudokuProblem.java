@@ -41,7 +41,25 @@ public class SudokuProblem {
 
         // Calculate the next row and column indices
         int nextRow = col == 8 ? row + 1 : row; // Move to the next row if the current column is the last one
+
+        //or this is an alternative way to calculate nextRow
+        // int nextRow;
+        // if (col == 8) {
+        //     nextRow = row + 1;
+        // } else {
+        //     nextRow = row;
+        // }
+
         int nextCol = (col + 1) % 9; // Move to the next column, wrapping around to 0 if necessary
+
+
+        //or this is an alternative way to calculate nextCol
+        // int nextCol;
+        // if (col == 8) {
+        //     nextCol = 0;
+        // } else {
+        //     nextCol = col + 1;
+        // }
 
         // If the current cell is already filled, move to the next cell
         if (sudoku[row][col] != 0) {
@@ -83,9 +101,16 @@ public class SudokuProblem {
 
     public static void main(String[] args) {
         // Example Sudoku board with 0s as placeholders for empty cells
-        int sudoku[][] = { { 0, 0, 8, 0, 0, 0, 0, 0, 0 }, { 4, 9, 0, 1, 5, 7, 0, 0, 2 }, { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
-                { 1, 8, 5, 0, 6, 0, 0, 2, 0 }, { 0, 0, 0, 0, 2, 0, 0, 6, 0 }, { 9, 6, 0, 4, 0, 5, 3, 0, 0 },
-                { 0, 3, 0, 0, 7, 2, 0, 0, 4 }, { 0, 4, 9, 0, 3, 0, 0, 5, 7 }, { 8, 2, 7, 0, 0, 9, 0, 1, 3 }, };
+        int sudoku[][] = { { 0, 0, 8, 0, 0, 0, 0, 0, 0 },
+                { 4, 9, 0, 1, 5, 7, 0, 0, 2 },
+                { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
+                { 1, 8, 5, 0, 6, 0, 0, 2, 0 },
+                { 0, 0, 0, 0, 2, 0, 0, 6, 0 },
+                { 9, 6, 0, 4, 0, 5, 3, 0, 0 },
+                { 0, 3, 0, 0, 7, 2, 0, 0, 4 }, 
+                { 0, 4, 9, 0, 3, 0, 0, 5, 7 }, 
+                { 8, 2, 7, 0, 0, 9, 0, 1, 3 }, 
+                    };
 
         // Attempt to solve the Sudoku
         if (sudokuSolver(sudoku, 0, 0)) {

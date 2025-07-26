@@ -298,3 +298,4 @@ public class RatMazeProblems {
     solveMaze(maze);
   }
 }
+  
